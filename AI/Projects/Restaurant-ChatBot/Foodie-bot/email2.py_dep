@@ -1,0 +1,23 @@
+import smtplib,ssl
+
+me ="akhileshdumca@gmail.com"
+#you = tracker.get_slot('email');
+pwd =""
+SUBJECT = "Recommened Cusine!"
+TEXT = "This message was sent with Python's smtplib."
+# Create a text/plain message
+msg = 'Subject: {}\n\n{}'.format(SUBJECT, TEXT)
+
+
+# Send the message via our own SMTP server.
+#		s = smtplib.SMTP('smtp.gmail.com', port);
+try:
+	s= smtplib.SMTP("smtp.gmail.com", 587)
+	s.ehlo()
+	s.starttls()
+	# Authentication 
+	s.login("akhileshdumca@gmail.com", "")
+	s.sendmail(me, 'akhilesh.dualumni@gmail.com', msg)
+	s.quit()
+except Exception as e:
+	print(str(e))
